@@ -40,7 +40,7 @@ export default function Opportunity() {
       value: "40,000",
       suffix: " +",
       label: "Business Careers Jobs every month",
-      color: "bg-[#CCFF00]" 
+      color: "bg-accent/40" 
     },
     {
       icon: <Headphones />,
@@ -48,18 +48,18 @@ export default function Opportunity() {
       prefix: "₹",
       suffix: " LPA",
       label: "Average Salary at Entry Level",
-      color: "bg-[#CCFF00]"
+      color: "bg-accent/40"
     },
     {
       icon: <BadgeIndianRupee />,
       value: "₹15–40 LPA", 
       label: "Average Salary at Mid level",
-      color: "bg-[#CCFF00]"
+      color: "bg-accent/40"
     }
   ];
 
   return (
-    <section className="bg-[#253b8d] mt-100 py-24 px-6 overflow-hidden">
+    <section className="bg-base mt-100 py-24 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto text-center">
         
         {/* Animated Heading Section */}
@@ -69,13 +69,13 @@ export default function Opportunity() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
-            Opportunity in <span className="text-cyan-300">Business Careers</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-2">
+            Opportunity in <span className="text-accent">Business Careers</span>
           </h2>
           
           {/* Hand-drawn style wavy underline */}
           <div className="flex justify-center mb-16">
-            <motion.svg 
+              <motion.svg 
               width="120" height="24" viewBox="0 0 100 20" fill="none"
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
@@ -84,7 +84,7 @@ export default function Opportunity() {
             >
               <path 
                 d="M5 15C20 5 30 25 45 15C60 5 70 25 85 15" 
-                stroke="#CCFF00" 
+                stroke="#0ea5b7" 
                 strokeWidth="4" 
                 strokeLinecap="round"
               />
@@ -104,28 +104,28 @@ export default function Opportunity() {
               className="flex flex-col items-center group"
             >
               {/* Icon with animated circle background */}
-              <div className="relative mb-8">
+                <div className="relative mb-8">
                 <motion.div 
                   initial={{ scale: 0, rotate: -45 }}
                   whileInView={{ scale: 1, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 120, delay: index * 0.2 + 0.4 }}
                   className={`absolute -top-3 -right-5 w-14 h-14 rounded-full shadow-lg ${item.color}`} 
                 />
-                <div className="relative z-10 text-white">
+                <div className="relative z-10 text-primary">
                   {React.cloneElement(item.icon, { 
-                    className: "w-14 h-14 text-white stroke-[1.5] drop-shadow-md group-hover:scale-110 transition-transform duration-300" 
+                    className: "w-14 h-14 text-primary stroke-[1.5] drop-shadow-md group-hover:scale-110 transition-transform duration-300" 
                   })}
                 </div>
               </div>
 
               {/* Animated Numbers */}
-              <h3 className="text-3xl md:text-4xl font-black text-white mb-4 flex items-center tracking-tight">
+              <h3 className="text-3xl md:text-4xl font-black text-primary mb-4 flex items-center tracking-tight">
                 {item.prefix}
                 <Counter value={item.value} suffix={item.suffix} />
               </h3>
 
               {/* Description Label */}
-              <p className="text-slate-200 text-base md:text-lg font-medium max-w-[220px] leading-snug opacity-90">
+              <p className="text-muted text-base md:text-lg font-medium max-w-[220px] leading-snug opacity-90">
                 {item.label}
               </p>
             </motion.div>

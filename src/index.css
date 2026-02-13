@@ -2,49 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-}
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
-    @apply font-sans antialiased bg-amoled text-white;
+    @apply font-sans antialiased bg-base text-primary;
   }
-}
-html {
-  scroll-behavior: smooth;
-}
 
-body {
-  @apply bg-black text-white antialiased;
-}
-
-.glass {
-  @apply bg-white/5 backdrop-blur-md border border-white/10;
-}
-
-.grid-pattern {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 34px 34px;
-}
-
-.marquee {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: scroll 20s linear infinite;
-}
-
-@keyframes scroll {
-  from {
-    transform: translateX(0);
+  /* dark mode: apply class "dark" on html or body to switch */
+  .dark body {
+    @apply bg-primary text-base;
   }
-  to {
-    transform: translateX(-50%);
+
+  /* glass card that adapts to theme */
+  .glass {
+    @apply bg-white/60 dark:bg-primary/60 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
   }
 }
